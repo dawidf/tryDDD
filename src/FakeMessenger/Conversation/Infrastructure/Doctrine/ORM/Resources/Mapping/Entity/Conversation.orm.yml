@@ -1,0 +1,28 @@
+FakeMessenger\Conversation\Domain\Entity\Conversation:
+  type: entity
+  repositoryClass: FakeMessenger\Conversation\Infrastructure\Doctrine\ORM\Repository\ConversationRepository
+  table: conversations
+  embedded:
+    id:
+      class: FakeMessenger\Conversation\Domain\Entity\ConversationId
+      columnPrefix: false
+  fields:
+    createdDate:
+      type: datetime
+  oneToMany:
+    messages:
+      targetEntity: FakeMessenger\Conversation\Domain\Entity\Message
+      mappedBy: conversation
+      cascade: ["persist"]
+  oneToOne:
+    from:
+      targetEntity: FakeMessenger\Conversation\Domain\Entity\User
+      cascade: ["persist"]
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+        onDelete: CASCADE
+
+
+
+

@@ -1,0 +1,5 @@
+FakeMessenger\Conversation\Domain\Entity\Username:
+  type: embeddable
+  fields:
+    name:
+      type: string

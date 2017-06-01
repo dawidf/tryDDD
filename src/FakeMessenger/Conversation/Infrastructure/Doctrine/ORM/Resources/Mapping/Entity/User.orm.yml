@@ -1,0 +1,11 @@
+FakeMessenger\Conversation\Domain\Entity\User:
+  type: entity
+  table: users
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  embedded:
+    name:
+      class: FakeMessenger\Conversation\Domain\Entity\Username

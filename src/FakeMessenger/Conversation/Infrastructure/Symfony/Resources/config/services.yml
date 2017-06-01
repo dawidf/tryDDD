@@ -1,0 +1,19 @@
+services:
+    fake_messenger.conversation.manager:
+        class: FakeMessenger\Conversation\Infrastructure\Doctrine\Manager\ConversationManager
+        arguments: ['@doctrine.orm.entity_manager']
+    fake_messenger.message.manager:
+        class: FakeMessenger\Conversation\Infrastructure\Doctrine\Manager\MessageManager
+        autowire: true
+
+    fake_messenger.conversation.create_conversation_handler:
+        class: FakeMessenger\Conversation\Application\Command\CreateConversationCommandHandler
+        arguments: ['@fake_messenger.conversation.manager']
+        tags:
+            - {name: tactician.handler, command: FakeMessenger\Conversation\Application\Command\CreateConversationCommand}
+
+    fake_messenger.conversation.create_message_handler:
+        class: FakeMessenger\Conversation\Application\Command\CreateMessageCommandHandler
+        arguments: ['@fake_messenger.message.manager']
+        tags:
+            - {name: tactician.handler, command: FakeMessenger\Conversation\Application\Command\CreateMessageCommand}

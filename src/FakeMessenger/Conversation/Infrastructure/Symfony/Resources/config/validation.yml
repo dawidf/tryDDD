@@ -1,0 +1,6 @@
+FakeMessenger\Conversation\Application\Command\CreateConversationCommand:
+    properties:
+      from:
+        - NotBlank: ~
+        - Length:
+            - max: 255

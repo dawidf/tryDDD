@@ -1,0 +1,6 @@
+FakeMessenger\Conversation\Domain\Entity\ConversationId:
+  type: embeddable
+  id:
+    id:
+      type: guid
+      nullable: false
